@@ -13,15 +13,15 @@
     MyAttachProperty.IsResizeAdorner="False"
     Style="{StaticResource Window_WithoutTitleBar}">
     <DockPanel>
-        <WindowTitleBar
-            Width="255"
-            HorizontalAlignment="Right"
-            DockPanel.Dock="Top">
-            <WindowTitleBar.LeftCollection>
+        <WindowTitleBar DockPanel.Dock="Top">
+            <WindowTitleBar.RightCollection>
                 <ElementCollection>
-                    <Button Command="{Binding SwitchThemeCommand}" Style="{StaticResource Button_Icon_Theme}" />
+                    <Button
+                        HorizontalAlignment="Left"
+                        Command="{Binding SwitchThemeCommand}"
+                        Style="{StaticResource Button_Icon_Theme}" />
                 </ElementCollection>
-            </WindowTitleBar.LeftCollection>
+            </WindowTitleBar.RightCollection>
         </WindowTitleBar>
 
         <Grid>
