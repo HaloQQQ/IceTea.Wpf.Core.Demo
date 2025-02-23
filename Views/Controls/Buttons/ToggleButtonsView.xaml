@@ -1,0 +1,74 @@
+﻿<UserControl
+    x:Class="IceTea.Wpf.Core.Demo.Views.Controls.ToggleButtonsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <ToggleButton>
+                <ToggleButton.Style>
+                    <Style BasedOn="{StaticResource ToggleButton_Icon_Fill}" TargetType="ToggleButton">
+                        <Setter Property="MyAttachProperty.SelectedForeground" Value="{StaticResource OrangeRed}" />
+
+                        <Setter Property="Content" Value="&#xe644;" />
+                        <Setter Property="ToolTip" Value="收藏" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Content" Value="&#xe684;" />
+                                <Setter Property="ToolTip" Value="取消收藏" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToggleButton.Style>
+            </ToggleButton>
+            <ToggleButton
+                Background="Red"
+                Content="ToggleButton"
+                Style="{StaticResource ButtonBase_Icon_Conent_Transparent}" />
+            <ToggleButton Style="{StaticResource ToggleButton_Icon_Layout}" />
+            <ToggleButton Style="{StaticResource ToggleButton_Icon_MaxWindow}" />
+            <ToggleButton Style="{StaticResource ToggleButton_Icon_Login}" />
+            <ToggleButton Style="{StaticResource ToggleButton_Icon_Slide}" />
+            <ToggleButton Style="{StaticResource ToggleButton_Icon_TopMost}" />
+            <ToggleButton Style="{StaticResource ToggleButton_Icon_Brightness}" />
+            <ToggleButton Style="{StaticResource ToggleButton_Icon_Volume}" />
+            <ToggleButton Style="{StaticResource ToggleButton_Icon_Play}" />
+            <ToggleButton Style="{StaticResource ToggleButton_Icon_Fill}" />
+        </StackPanel>
+
+        <WrapPanel>
+            <CheckBox
+                Height="30"
+                HorizontalContentAlignment="Right"
+                Content="普通CheckBox" />
+            <CheckBox
+                HorizontalContentAlignment="Right"
+                Content="Switch CheckBox"
+                Style="{StaticResource CheckBox_Switch}" />
+            <CheckBox
+                HorizontalContentAlignment="Left"
+                Content="Switch CheckBox"
+                MyAttachProperty.IsCollapsed="True"
+                Style="{StaticResource CheckBox_Switch}" />
+            <CheckBox
+                HorizontalContentAlignment="Left"
+                Content="CheckMark CheckBox"
+                Style="{StaticResource CheckBox_CheckMark}" />
+        </WrapPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <RadioButton
+                HorizontalContentAlignment="Left"
+                Content="Radio Button1"
+                GroupName="Test" />
+            <RadioButton
+                HorizontalContentAlignment="Right"
+                Content="Radio Button2"
+                GroupName="Test" />
+            <RadioButton
+                HorizontalContentAlignment="Left"
+                Content="Radio Button3"
+                GroupName="Test" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,106 @@
+﻿<UserControl
+    x:Class="IceTea.Wpf.Core.Demo.Views.Controls.ItemsControls"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:models="clr-namespace:IceTea.Wpf.Core.Demo.Models"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <UniformGrid Columns="2" Rows="3">
+        <Menu>
+            <MenuItem
+                Header="TopItem"
+                Icon="&#xe66f;"
+                IsCheckable="True"
+                IsChecked="True" />
+            <MenuItem Header="TopHeader">
+                <MenuItem
+                    Header="SubItem"
+                    Icon="&#xe66f;"
+                    InputGestureText="Ctrl+A"
+                    IsCheckable="True"
+                    IsChecked="True" />
+                <MenuItem
+                    Header="SubHeader"
+                    Icon="&#xe66f;"
+                    InputGestureText="Ctrl+A">
+                    <MenuItem
+                        Header="SubItem"
+                        Icon="&#xe66f;"
+                        InputGestureText="Ctrl+A"
+                        IsCheckable="True"
+                        IsChecked="True" />
+                </MenuItem>
+            </MenuItem>
+            <MenuItem
+                Header="TopHeader"
+                Icon="&#xe66f;"
+                IsChecked="True">
+                <MenuItem Header="SubHeader">
+                    <MenuItem Header="SubHeader" Icon="&#xe66f;">
+                        <MenuItem
+                            Header="SubItem"
+                            Icon="&#xe66f;"
+                            IsCheckable="True" />
+                    </MenuItem>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <Menu
+            Padding="5,0"
+            ItemsSource="{Binding Menus}"
+            MyAttachProperty.CornerRadius="5">
+            <Menu.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type models:MenuNode}" ItemsSource="{Binding Items}">
+                    <ContentPresenter Content="{Binding Name}" />
+                </HierarchicalDataTemplate>
+            </Menu.ItemTemplate>
+        </Menu>
+
+        <Button Content="上下文菜单" MyAttachProperty.HasContextMenu="True">
+            <Button.ContextMenu>
+                <ContextMenu MyAttachProperty.IsCollapsed="True">
+                    <MenuItem Header="SubItem" InputGestureText="Ctrl+A" />
+                    <MenuItem Header="SubHeader">
+                        <MenuItem Header="SubItem" />
+                        <MenuItem Header="SubHeader" InputGestureText="Ctrl+B">
+                            <MenuItem Header="SubItem" />
+                        </MenuItem>
+                        <MenuItem Header="SubHeader">
+                            <MenuItem Header="SubHeader">
+                                <MenuItem Header="SubItem" />
+                            </MenuItem>
+                        </MenuItem>
+                    </MenuItem>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+
+        <TreeView ItemsSource="{Binding Controls}">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type models:ControlNode}" ItemsSource="{Binding Items}">
+                    <ContentPresenter Content="{Binding Name}" />
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+            <TreeView.ItemContainerStyle>
+                <Style BasedOn="{StaticResource {x:Type TreeViewItem}}" TargetType="TreeViewItem">
+                    <Setter Property="MyAttachProperty.IconFontText" Value="&#xe61c;" />
+                    <Setter Property="MyAttachProperty.DoubleValue" Value="30" />
+                </Style>
+            </TreeView.ItemContainerStyle>
+        </TreeView>
+
+        <TreeView ItemsSource="{Binding Controls}" MyAttachProperty.IconPosition="Left">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type models:ControlNode}" ItemsSource="{Binding Items}">
+                    <ContentPresenter Content="{Binding Name}" />
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+            <TreeView.ItemContainerStyle>
+                <Style BasedOn="{StaticResource {x:Type TreeViewItem}}" TargetType="TreeViewItem">
+                    <Setter Property="MyAttachProperty.IconFontText" Value="&#xe61c;" />
+                    <Setter Property="MyAttachProperty.DoubleValue" Value="30" />
+                </Style>
+            </TreeView.ItemContainerStyle>
+        </TreeView>
+    </UniformGrid>
+</UserControl>
